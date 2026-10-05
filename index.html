@@ -1,0 +1,1208 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="Student e-Portfolio showcasing laboratory work, projects, reflections, technical skills, and learning resources."> <title>Student e-Portfolio | Muhammad Amirul Haizat</title>
+<style>
+    :root {
+        --bg: #f5f7fb;
+        --surface: #ffffff;
+        --surface-alt: #eef2f7;
+        --text: #172033;
+        --muted: #64748b;
+        --primary: #4f46e5;
+        --primary-dark: #3730a3;
+        --secondary: #06b6d4;
+        --border: #e2e8f0;
+        --shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+        --radius: 18px;
+        --max-width: 1180px;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+    }
+
+    body {
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+            "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    img {
+        max-width: 100%;
+        display: block;
+    }
+
+    .container {
+        width: min(100% - 40px, var(--max-width));
+        margin-inline: auto;
+    }
+
+    /* Navigation */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+    }
+
+    nav {
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+    }
+
+    .brand {
+        font-size: 1.1rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+    }
+
+    .brand span {
+        color: var(--primary);
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 9px 13px;
+        border-radius: 10px;
+        color: var(--muted);
+        font-size: 0.92rem;
+        font-weight: 600;
+        transition: 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+        color: var(--primary);
+        background: #eef2ff;
+        outline: none;
+    }
+
+    /* Hero */
+    .hero {
+        min-height: calc(100vh - 72px);
+        display: flex;
+        align-items: center;
+        padding: 90px 0;
+        background:
+            radial-gradient(circle at 85% 20%, rgba(79, 70, 229, 0.14), transparent 30%),
+            radial-gradient(circle at 10% 80%, rgba(6, 182, 212, 0.10), transparent 28%),
+            var(--bg);
+    }
+
+    .hero-content {
+        max-width: 820px;
+    }
+
+    .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px;
+        margin-bottom: 20px;
+        border-radius: 999px;
+        background: #eef2ff;
+        color: var(--primary-dark);
+        font-size: 0.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.5rem, 7vw, 5.2rem);
+        line-height: 1.05;
+        letter-spacing: -0.055em;
+        margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+        color: var(--primary);
+    }
+
+    .hero p {
+        max-width: 700px;
+        color: var(--muted);
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        margin-bottom: 32px;
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 18px;
+        border-radius: 11px;
+        border: 1px solid transparent;
+        font-size: 0.92rem;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .button:hover {
+        transform: translateY(-2px);
+    }
+
+    .button-primary {
+        background: var(--primary);
+        color: white;
+        box-shadow: 0 8px 20px rgba(79, 70, 229, 0.22);
+    }
+
+    .button-primary:hover {
+        background: var(--primary-dark);
+    }
+
+    .button-secondary {
+        background: var(--surface);
+        border-color: var(--border);
+        color: var(--text);
+    }
+
+    .button-secondary:hover {
+        background: var(--surface-alt);
+    }
+
+    /* Sections */
+    section {
+        padding: 90px 0;
+    }
+
+    .section-heading {
+        max-width: 720px;
+        margin-bottom: 42px;
+    }
+
+    .section-heading .label {
+        color: var(--primary);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+
+    .section-heading h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.15;
+        letter-spacing: -0.035em;
+        margin-bottom: 12px;
+    }
+
+    .section-heading p {
+        color: var(--muted);
+    }
+
+    /* Information panel */
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        margin-bottom: 32px;
+    }
+
+    .info-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+        box-shadow: var(--shadow);
+    }
+
+    .info-card h3 {
+        font-size: 0.8rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 6px;
+    }
+
+    .info-card p {
+        font-weight: 700;
+    }
+
+    /* Cards */
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 26px;
+    }
+
+    .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.11);
+    }
+
+    .card-content {
+        padding: 26px;
+    }
+
+    .card-tag {
+        display: inline-block;
+        padding: 4px 9px;
+        border-radius: 7px;
+        background: #eef2ff;
+        color: var(--primary-dark);
+        font-size: 0.72rem;
+        font-weight: 800;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+    }
+
+    .card h3 {
+        font-size: 1.35rem;
+        line-height: 1.3;
+        margin-bottom: 10px;
+    }
+
+    .card-description {
+        color: var(--muted);
+        margin-bottom: 20px;
+    }
+
+    .video-wrapper {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: #0f172a;
+        overflow: hidden;
+    }
+
+    .video-wrapper iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+    }
+
+    .reflection {
+        margin-top: 22px;
+        padding: 17px 18px;
+        border-left: 3px solid var(--primary);
+        background: var(--surface-alt);
+        border-radius: 0 10px 10px 0;
+    }
+
+    .reflection strong {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 0.88rem;
+    }
+
+    .reflection p {
+        color: var(--muted);
+        font-size: 0.92rem;
+    }
+
+    .project-footer {
+        margin-top: 22px;
+    }
+
+    /* Reflection */
+    .reflection-section {
+        background: #111827;
+        color: white;
+    }
+
+    .reflection-section .section-heading p {
+        color: #a8b3c7;
+    }
+
+    .reflection-box {
+        max-width: 900px;
+        padding: 34px;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: var(--radius);
+        background: rgba(255,255,255,0.05);
+    }
+
+    .reflection-box p {
+        color: #d4dbe7;
+        font-size: 1.05rem;
+    }
+
+    /* Skills */
+    .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .skill {
+        padding: 9px 14px;
+        border-radius: 999px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        color: var(--text);
+        font-size: 0.88rem;
+        font-weight: 650;
+    }
+
+    /* Resources */
+    .resource-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        list-style: none;
+    }
+
+    .resource-list li {
+        padding: 20px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+    }
+
+    .resource-list strong {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .resource-list span {
+        color: var(--muted);
+        font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 35px 0;
+        background: #0b1120;
+        color: #cbd5e1;
+        text-align: center;
+    }
+
+    footer strong {
+        color: white;
+    }
+
+    footer p {
+        font-size: 0.88rem;
+    }
+
+    .footer-small {
+        margin-top: 5px;
+        color: #94a3b8;
+    }
+
+    /* Mobile */
+    @media (max-width: 820px) {
+        .nav-links {
+            gap: 0;
+        }
+
+        .nav-links a {
+            padding: 8px 7px;
+            font-size: 0.78rem;
+        }
+
+        .brand {
+            font-size: 0.95rem;
+        }
+
+        .card-grid,
+        .info-grid,
+        .resource-list {
+            grid-template-columns: 1fr;
+        }
+
+        section {
+            padding: 70px 0;
+        }
+
+        .hero {
+            padding: 70px 0;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            width: min(100% - 28px, var(--max-width));
+        }
+
+        header {
+            position: relative;
+        }
+
+        nav {
+            min-height: auto;
+            padding: 14px 0;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+        }
+
+        .brand {
+            text-align: center;
+        }
+
+        .nav-links {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            padding: 6px 8px;
+        }
+
+        .hero {
+            min-height: auto;
+        }
+
+        .hero h1 {
+            font-size: 2.7rem;
+        }
+
+        .hero-actions {
+            flex-direction: column;
+        }
+
+        .button {
+            width: 100%;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+            transition: none !important;
+        }
+    }
+</style>
+</head> <body> <header> <nav class="container" aria-label="Main navigation"> <a href="#home" class="brand"> Amirul<span>.</span>Portfolio </a>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#labs">Labs</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#reflection">Reflection</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#resources">Resources</a></li>
+    </ul>
+</nav>
+</header> <main>
+<!-- HOME -->
+<section id="home" class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="eyebrow">Student E-Portfolio</div>
+
+            <h1>
+                Learning, Building &amp;
+                <span>Reflecting.</span>
+            </h1>
+
+            <p>
+                Welcome to my student e-Portfolio. This portfolio documents my
+                laboratory activities, software projects, cybersecurity learning,
+                technical skills, and reflections throughout my studies.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#projects" class="button button-primary">Explore Projects</a>
+                <a href="#reflection" class="button button-secondary">My Reflection</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECT INFORMATION -->
+<section aria-labelledby="portfolio-information">
+    <div class="container">
+        <div class="section-heading">
+            <div class="label">Portfolio Information</div>
+            <h2 id="portfolio-information">Project &amp; Group Details</h2>
+            <p>
+                Basic information about the student, programme, instructor,
+                and project context.
+            </p>
+        </div>
+
+        <div class="info-grid">
+            <article class="info-card">
+                <h3>Student</h3>
+                <p>Muhammad Amirul Haizat Bin Mohd Azmi</p>
+            </article>
+
+            <article class="info-card">
+                <h3>Matric No.</h3>
+                <p>A216622</p>
+            </article>
+
+            <article class="info-card">
+                <h3>Programme</h3>
+                <p>Information Technology</p>
+            </article>
+
+            <article class="info-card">
+                <h3>Instructor</h3>
+                <p>[INSTRUCTOR NAME]</p>
+            </article>
+        </div>
+
+        <div class="info-card">
+            <h3>Scenario</h3>
+            <p>
+                This portfolio presents my practical learning journey through
+                laboratory exercises and software projects. The activities
+                focus on understanding technical concepts, implementing
+                solutions, identifying vulnerabilities, and reflecting on
+                how practical development improves my problem-solving skills.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- LABS -->
+<section id="labs" aria-labelledby="labs-heading">
+    <div class="container">
+        <div class="section-heading">
+            <div class="label">Practical Work</div>
+            <h2 id="labs-heading">Laboratory Activities</h2>
+            <p>
+                Selected laboratory activities demonstrating practical
+                implementation and technical learning.
+            </p>
+        </div>
+
+        <div class="card-grid">
+
+            <article class="card">
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/Sro04qwQLPQ?origin=https://a216622-sudo.github.io"
+                        title="Laboratory Activity 1 demonstration video"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="card-content">
+                    <span class="card-tag">Lab 01</span>
+                    <h3>Laboratory Activity 1</h3>
+
+                    <p class="card-description">
+                        [Add a short description of the laboratory activity,
+                        its objective, and what was implemented.]
+                    </p>
+
+                    <div class="reflection">
+                        <strong>Reflection</strong>
+                        <p>
+                            This laboratory helped me understand how the
+                            theoretical concepts discussed in class can be
+                            translated into a practical implementation.
+                            I also gained more confidence in troubleshooting
+                            problems and testing my work systematically.
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/Sro04qwQLPQ?origin=https://a216622-sudo.github.io"
+                        title="Laboratory Activity 2 demonstration video"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="card-content">
+                    <span class="card-tag">Lab 02</span>
+                    <h3>Laboratory Activity 2</h3>
+
+                    <p class="card-description">
+                        [Add a short description of the laboratory activity,
+                        its objective, and what was implemented.]
+                    </p>
+
+                    <div class="reflection">
+                        <strong>Reflection</strong>
+                        <p>
+                            Through this activity, I improved my ability to
+                            analyse a technical problem before attempting a
+                            solution. It also showed me the importance of
+                            testing individual components instead of relying
+                            only on the final output.
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/Sro04qwQLPQ?origin=https://a216622-sudo.github.io"
+                        title="Laboratory Activity 3 demonstration video"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="card-content">
+                    <span class="card-tag">Lab 03</span>
+                    <h3>Laboratory Activity 3</h3>
+
+                    <p class="card-description">
+                        [Add a short description of the laboratory activity,
+                        its objective, and what was implemented.]
+                    </p>
+
+                    <div class="reflection">
+                        <strong>Reflection</strong>
+                        <p>
+                            This activity strengthened my understanding of
+                            practical software development and debugging.
+                            I learned that documenting errors and analysing
+                            their causes can make the development process
+                            more efficient.
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" aria-labelledby="projects-heading">
+    <div class="container">
+        <div class="section-heading">
+            <div class="label">Major Work</div>
+            <h2 id="projects-heading">Projects</h2>
+            <p>
+                Project implementations, vulnerability demonstrations,
+                solutions, and personal reflections.
+            </p>
+        </div>
+
+        <div class="card-grid">
+
+            <!-- PROJECT 1 -->
+            <article class="card">
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/Sro04qwQLPQ?origin=https://a216622-sudo.github.io"
+                        title="Project 1 demonstration video"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="card-content">
+                    <span class="card-tag">Project</span>
+
+                    <h3>[NAME OF PROJECT]</h3>
+
+                    <p class="card-description">
+                        [Write the project problem statement in one or two
+                        sentences. Explain the problem being addressed and
+                        the purpose of the proposed solution.]
+                    </p>
+
+                    <div class="reflection">
+                        <strong>Reflection</strong>
+                        <p>
+                            Working on this project helped me connect
+                            cybersecurity concepts with actual software
+                            implementation. I learned that identifying a
+                            vulnerability is only the first step, while
+                            understanding its root cause is essential for
+                            designing an effective solution.
+                        </p>
+                    </div>
+
+                    <div class="project-footer">
+                        <a
+                            href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY"
+                            class="button button-primary"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PROJECT 2 -->
+            <article class="card">
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/Sro04qwQLPQ?origin=https://a216622-sudo.github.io"
+                        title="Project 2 demonstration video"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="card-content">
+                    <span class="card-tag">Project</span>
+
+                    <h3>[SECOND PROJECT NAME]</h3>
+
+                    <p class="card-description">
+                        [Write the project problem statement in one or two
+                        sentences. Explain the problem being addressed and
+                        the purpose of the proposed solution.]
+                    </p>
+
+                    <div class="reflection">
+                        <strong>Reflection</strong>
+                        <p>
+                            This project gave me an opportunity to apply
+                            software development concepts to a practical
+                            scenario. It also improved my ability to evaluate
+                            security risks and think about how design decisions
+                            can affect the reliability of an application.
+                        </p>
+                    </div>
+
+                    <div class="project-footer">
+                        <a
+                            href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY"
+                            class="button button-primary"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- VULNERABILITY CASES -->
+<section aria-labelledby="vulnerability-heading">
+    <div class="container">
+        <div class="section-heading">
+            <div class="label">Security Analysis</div>
+            <h2 id="vulnerability-heading">Vulnerability Solutions</h2>
+            <p>
+                Individual cases documenting vulnerability implementations,
+                testing, and security reflections.
+            </p>
+        </div>
+
+        <div class="card-grid">
+
+            <article class="card">
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/Sro04qwQLPQ?origin=https://a216622-sudo.github.io"
+                        title="Login test vulnerability demonstration"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="card-content">
+                    <span class="card-tag">Case 1</span>
+                    <h3>Login Test</h3>
+
+                    <p class="card-description">
+                        Live Code Vulnerability Implementation:
+                        <a href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub Repository
+                        </a>
+                    </p>
+
+                    <div class="reflection">
+                        <strong>Reflection</strong>
+                        <p>
+                            The login test demonstrated how authentication
+                            weaknesses can affect application security.
+                            I learned that authentication logic should be
+                            carefully validated rather than relying only
+                            on client-side controls.
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/Sro04qwQLPQ?origin=https://a216622-sudo.github.io"
+                        title="Data 1 vulnerability demonstration"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="card-content">
+                    <span class="card-tag">Case 2</span>
+                    <h3>Data 1</h3>
+
+                    <p class="card-description">
+                        Live Code Vulnerability Implementation:
+                        <a href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub Repository
+                        </a>
+                    </p>
+
+                    <div class="reflection">
+                        <strong>Reflection</strong>
+                        <p>
+                            This case helped me understand how insecure
+                            handling of application data can introduce
+                            security risks. I became more aware of the
+                            importance of validating and protecting data
+                            throughout the application lifecycle.
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/Sro04qwQLPQ?origin=https://a216622-sudo.github.io"
+                        title="Data 2 vulnerability demonstration"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="card-content">
+                    <span class="card-tag">Case 3</span>
+                    <h3>Data 2</h3>
+
+                    <p class="card-description">
+                        Live Code Vulnerability Implementation:
+                        <a href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub Repository
+                        </a>
+                    </p>
+
+                    <div class="reflection">
+                        <strong>Reflection</strong>
+                        <p>
+                            Analysing this case showed me that small
+                            weaknesses in data processing can become larger
+                            security problems. I learned to consider both
+                            normal and unexpected input when developing
+                            software.
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/Sro04qwQLPQ?origin=https://a216622-sudo.github.io"
+                        title="SQL injection vulnerability demonstration"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="card-content">
+                    <span class="card-tag">Case 4</span>
+                    <h3>SQL Injection</h3>
+
+                    <p class="card-description">
+                        Live Code Vulnerability Implementation:
+                        <a href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub Repository
+                        </a>
+                    </p>
+
+                    <div class="reflection">
+                        <strong>Reflection</strong>
+                        <p>
+                            The SQL injection case showed me why dynamically
+                            constructing SQL queries from untrusted input is
+                            dangerous. I learned the importance of defensive
+                            programming techniques such as parameterized
+                            queries and proper input validation.
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/Sro04qwQLPQ?origin=https://a216622-sudo.github.io"
+                        title="Placeholder vulnerability demonstration 1"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="card-content">
+                    <span class="card-tag">Case 5</span>
+                    <h3>Placeholder 1</h3>
+
+                    <p class="card-description">
+                        Live Code Vulnerability Implementation:
+                        <a href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub Repository
+                        </a>
+                    </p>
+
+                    <div class="reflection">
+                        <strong>Reflection</strong>
+                        <p>
+                            This case gave me another opportunity to
+                            investigate how vulnerabilities can occur during
+                            software development. The exercise reinforced
+                            the importance of considering security from the
+                            beginning of the development process.
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/Sro04qwQLPQ?origin=https://a216622-sudo.github.io"
+                        title="Placeholder vulnerability demonstration 2"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="card-content">
+                    <span class="card-tag">Case 6</span>
+                    <h3>Placeholder 2</h3>
+
+                    <p class="card-description">
+                        Live Code Vulnerability Implementation:
+                        <a href="https://github.com/YOUR-USERNAME/YOUR-REPOSITORY"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub Repository
+                        </a>
+                    </p>
+
+                    <div class="reflection">
+                        <strong>Reflection</strong>
+                        <p>
+                            Completing this case improved my ability to
+                            identify potential security issues and explain
+                            their impact. It also encouraged me to think
+                            beyond functionality and consider the security
+                            requirements of the complete system.
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- REFLECTION -->
+<section id="reflection" class="reflection-section" aria-labelledby="reflection-heading">
+    <div class="container">
+        <div class="section-heading">
+            <div class="label">Learning Journey</div>
+            <h2 id="reflection-heading">Reflection &amp; Learning Journey</h2>
+            <p>
+                A summary of what I learned through the practical activities
+                and project development process.
+            </p>
+        </div>
+
+        <div class="reflection-box">
+            <p>
+                Throughout this learning journey, I gained a better
+                understanding of how software development concepts can be
+                applied to real-world problems. The practical activities
+                improved my confidence in programming, debugging, testing,
+                and analysing vulnerabilities. I also learned that secure
+                software development requires developers to consider
+                potential risks during the design and implementation stages,
+                rather than only after a system has been completed. Overall,
+                these experiences helped me become more systematic when
+                solving technical problems and more aware of the importance
+                of writing reliable and secure software.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" aria-labelledby="skills-heading">
+    <div class="container">
+        <div class="section-heading">
+            <div class="label">Technical Competencies</div>
+            <h2 id="skills-heading">Skills &amp; Tech Stack</h2>
+            <p>
+                Technologies, programming concepts, and technical skills
+                developed or applied throughout the coursework.
+            </p>
+        </div>
+
+        <div class="skills-list" aria-label="Technical skills">
+            <span class="skill">HTML5</span>
+            <span class="skill">CSS3</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">Java</span>
+            <span class="skill">C</span>
+            <span class="skill">PHP</span>
+            <span class="skill">SQL</span>
+            <span class="skill">SQL Injection</span>
+            <span class="skill">Secure Coding</span>
+            <span class="skill">Input Validation</span>
+            <span class="skill">Authentication</span>
+            <span class="skill">Git</span>
+            <span class="skill">GitHub</span>
+            <span class="skill">Debugging</span>
+            <span class="skill">Software Testing</span>
+            <span class="skill">Problem Solving</span>
+            <span class="skill">Responsive Web Design</span>
+        </div>
+    </div>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources" aria-labelledby="resources-heading">
+    <div class="container">
+        <div class="section-heading">
+            <div class="label">References</div>
+            <h2 id="resources-heading">Resources &amp; Acknowledgements</h2>
+            <p>
+                APIs, libraries, documentation, development tools, and
+                learning resources used throughout the portfolio.
+            </p>
+        </div>
+
+        <ul class="resource-list">
+            <li>
+                <strong>HTML5 &amp; CSS3</strong>
+                <span>
+                    Used for the structure, semantic content, responsive
+                    layout, and visual design of this portfolio.
+                </span>
+            </li>
+
+            <li>
+                <strong>JavaScript</strong>
+                <span>
+                    Used where applicable for client-side functionality
+                    and interactive web development.
+                </span>
+            </li>
+
+            <li>
+                <strong>GitHub</strong>
+                <span>
+                    Used for source-code version control and project
+                    repository hosting.
+                </span>
+            </li>
+
+            <li>
+                <strong>YouTube</strong>
+                <span>
+                    Used to embed project and laboratory demonstration
+                    videos using the standard YouTube embed format.
+                </span>
+            </li>
+
+            <li>
+                <strong>OWASP Resources</strong>
+                <span>
+                    Security concepts and vulnerability information can be
+                    referenced through OWASP documentation.
+                </span>
+            </li>
+
+            <li>
+                <strong>AI Assistance</strong>
+                <span>
+                    AI tools were used as learning and development
+                    assistance for brainstorming, explaining technical
+                    concepts, debugging, improving code structure, and
+                    refining documentation. Final implementations were
+                    reviewed and adapted based on the project requirements.
+                </span>
+            </li>
+        </ul>
+    </div>
+</section>
+</main> <!-- FOOTER --> <footer> <div class="container"> <p> &copy; <span id="current-year">2026</span> <strong>Muhammad Amirul Haizat Bin Mohd Azmi</strong> </p>
+    <p class="footer-small">
+        Matric No. A216622 &middot; Student E-Portfolio
+    </p>
+</div>
+</footer> <script> document.getElementById("current-year").textContent = new Date().getFullYear(); </script> </body> </html>
